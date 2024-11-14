@@ -99,7 +99,7 @@ module appServicePlan './core/host/appserviceplan.bicep' = {
   scope: rg
   params: {
     name: _appServicePlanName
-    location: location
+    location: 'eastus2'
     tags: _tags
     sku: {
       name: 'P0v3'
@@ -118,7 +118,7 @@ module appService  'core/host/appservice.bicep'  = {
     runtimeName: 'DOCKER'
     runtimeVersion: '${_containerRepositoryName}:dummy'
     keyVaultName: _keyVaultName
-    location: location
+    location:  'eastus2'
     tags: union(_tags, { 'azd-service-name': 'rag-flow' })
     appServicePlanId: appServicePlan.outputs.id
     scmDoBuildDuringDeployment: false
